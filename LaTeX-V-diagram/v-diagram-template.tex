@@ -1,0 +1,78 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8
+
+% This is a simple template for a XeLaTeX document using the "article" class,
+% with the fontspec package to easily select fonts.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage{fontspec} % Font selection for XeLaTeX; see fontspec.pdf for documentation
+\defaultfontfeatures{Mapping=tex-text} % to support TeX conventions like ``---''
+\usepackage{xunicode} % Unicode support for LaTeX character names (accents, European chars, etc)
+\usepackage{xltxtra} % Extra customizations for XeLaTeX
+
+%\setmainfont{Charis SIL} % set the main body font (\textrm), assumes Charis SIL is installed
+%\setsansfont{Deja Vu Sans}
+%\setmonofont{Deja Vu Mono}
+
+% other LaTeX packages.....
+\usepackage{geometry} % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper} % or letterpaper (US) or a5paper or....
+\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+\title{Systems Engineering Process Model}
+\author{}
+\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\usepackage{pst-tree}
+
+\begin{document}
+\maketitle
+
+%\section{}
+
+%\subsection{}
+
+
+\begin{pspicture}
+%\psgrid
+
+\pstree[treemode=U,dotstyle=otimes,dotsize=8pt,nodesep=0pt]{\TR{\psshadowbox{\shortstack{Prototyping\\and\\Implementation}}}}{%
+	\pstree{\Tr[name=L1]{\psshadowbox{\shortstack{Detailed Design of\\Components}}}}{%
+		\pstree{\Tr[name=L2]{\psshadowbox{\shortstack{Allocate System\\Functions to\\Subsystems}}}}{%
+			\pstree{\Tr[name=L3]{\psshadowbox{\shortstack{Define System\\Requirements}}}}{%
+				\pstree{\Tr[name=L4]{\psshadowbox{\shortstack{Customer Needs\\Analysis}}}}{%
+		
+				}\Tn					
+			}\Tn
+		} \Tn
+	}\Tn
+	\pstree{\Tr[name=R1]{\psshadowbox{\shortstack{Verify Components\\Unit Testing}}}}{%
+		\Tn\pstree{\Tr[name=R2]{\psshadowbox{\shortstack{Verification of\\Subsystems}}}}{%
+			\Tn\pstree{\Tr[name=R3]{\psshadowbox{\shortstack{Full System Operation\\and Verification}}}}{%
+				\Tn\pstree{\Tr[name=R4]{\psshadowbox{\shortstack{Validate Customer\\Satisfaction}}}}{%
+		
+				}					
+			}
+		} 
+	}
+}
+
+\ncline[linestyle=dashed]{L1}{R1}
+\ncput*{Testing}
+\ncline[linestyle=dashed]{L2}{R2}
+\ncput*{Testing}
+\ncline[linestyle=dashed]{L3}{R3}
+\ncput*{Testing}
+\ncline[linestyle=dashed]{L4}{R4}
+\ncput*{Testing}
+
+
+\end{pspicture}
+
+
+
+\end{document}

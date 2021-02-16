@@ -1,3 +1,6 @@
 .ipynb_checkpoints/
 
 Normal(0.5,1.2).pdf
+*.aux
+*.log
+*.gz
