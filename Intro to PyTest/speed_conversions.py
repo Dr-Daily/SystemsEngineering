@@ -20,12 +20,16 @@ def convert_can_bytes_to_speed(can_data):
     # Extract the 2 bytes for speed.
     # J1939 specifies bytes 2 and 3 indexed from 1
     # Python indexes from zero and the last index is not included
-    speed_bytes = can_data[1:3] 
-
+    try:
+        speed_bytes = can_data[1:3] 
+    except TypeError:
+        return None
     #unpack the speed byted to an integer using the struct function
     # See https://docs.python.org/3/library/struct.html#format-characters
-    speed_int = struct.unpack("<h",speed_bytes)[0]
-
+    try:
+        speed_int = struct.unpack("<H",speed_bytes)[0]
+    except:
+        return None
     # Convert the integer into km/h
     speed_kph = speed_int/256
 

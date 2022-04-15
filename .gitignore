@@ -4,3 +4,5 @@ Normal(0.5,1.2).pdf
 *.aux
 *.log
 *.gz
+Intro to Jupyter/data.txt
+*.pyc
